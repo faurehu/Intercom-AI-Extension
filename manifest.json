@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+
+  "name": "True AI extension for Intercom",
+  "description": "This extension shows True AI suggestions for messages in Intercom",
+  "version": "1.0",
+  "author": "Faure Hu",
+  "permissions": [
+    "tabs",
+    "storage",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["event-page.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.intercom.io/a/apps/*/inbox/*/conversations/*"
+      ],
+      "js": [
+        "content-scripts/DOM.js",
+        "content-scripts/cache.js",
+        "content-scripts/config.js",
+        "content-scripts/true-ai-api.js",
+        "content-scripts/main.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "assets/robot_on.svg",
+    "assets/robot_off.svg"
+  ]
+}
