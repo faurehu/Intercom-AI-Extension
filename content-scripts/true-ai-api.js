@@ -2,8 +2,8 @@
  * All interactions with the TrueAI server are abstracted here
  */
 
-var TRUE_AI_API_URL_SUGGESTION = 'https://15fe6747.ngrok.io/suggestions';
-var TRUE_AI_API_URL_RESPONSE = 'https://15fe6747.ngrok.io/responses';
+var TRUE_AI_API_URL_SUGGESTION = 'https://trueai.io/suggestions';
+var TRUE_AI_API_URL_RESPONSE = 'https://trueai.io/responses';
 
 function getConversationID() {
   var path = window.location.pathname.split('/');
