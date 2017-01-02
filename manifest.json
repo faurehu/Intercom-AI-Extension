@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "True AI extension for Intercom",
-  "description": "This extension shows True AI suggestions for messages in Intercom",
+  "name": "Response extension for Intercom",
+  "description": "This extension shows your API suggestions for messages in Intercom",
   "version": "1.0",
   "author": "Faure Hu",
   "permissions": [
@@ -23,7 +23,7 @@
         "content-scripts/DOM.js",
         "content-scripts/cache.js",
         "content-scripts/config.js",
-        "content-scripts/true-ai-api.js",
+        "content-scripts/service-api.js",
         "content-scripts/main.js"
       ],
       "run_at": "document_end"

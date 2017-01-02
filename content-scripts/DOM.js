@@ -10,7 +10,7 @@ function appendSwitch(suggestionEnabled) {
   }
 
   function getDataContent(suggestionEnabled) {
-    return 'Switch TrueAI suggestions ' + (suggestionEnabled ? 'off' : 'on');
+    return 'Switch suggestions ' + (suggestionEnabled ? 'off' : 'on');
   }
 
   function toggleSwitch(event) {

@@ -3,15 +3,15 @@
  * are stored here. We use the sync Storage Area to make these settings
  * available no matter the machine.
  *
- * The True AI config has the following schema:
+ * The config has the following schema:
  * {
  *  "suggestionEnabled": bool
  * }
  */
 
 function getConfig(cb) {
-  chrome.storage.local.get('true_ai_config', function(items) {
-    config = items['true_ai_config'];
+  chrome.storage.local.get('config', function(items) {
+    config = 'config' in items ? items['config'] : {};
     if ('suggestionEnabled' in config) {
       cb(config);
     } else {
@@ -21,5 +21,5 @@ function getConfig(cb) {
 }
 
 function storeConfig(config) {
-  chrome.storage.local.set({'true_ai_config': config});
+  chrome.storage.local.set({'config': config});
 }

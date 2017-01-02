@@ -1,5 +1,5 @@
 // Main function, runs everytime a conversation page is loaded
-function loadTrueAI() {
+function loadExtension() {
 
 
   // getConfig makes an async call, so the value is exposed in the callback
@@ -26,7 +26,7 @@ function makeSuggestion() {
 
       company = getCompany();
 
-      // We get a TrueAI suggestion for this conversation, showSuggestion
+      // We get a suggestion for this conversation, showSuggestion
       // is a callback that will append the suggestion into the editor
       suggestion = getSuggestion(context, company, showSuggestion);
 }
@@ -38,8 +38,8 @@ function handleBackgroundMessage(request, _, __) {
   var REGEX = /https:\/\/app.intercom.io\/a\/apps\/\w*\/inbox\/.*\/conversations\/\d*/g
 
   if (REGEX.test(request.tab.url) && request.tab.status == 'complete') {
-    // Since this page is a conversation, we can load TrueAI
-    loadTrueAI()
+    // Since this page is a conversation, we can load extension
+    loadExtension()
   }
 }
 

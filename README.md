@@ -27,11 +27,11 @@ This one would have a tab on top of the editor box. It had very little going for
 
 #### Option B
 ![Option B](http://i.imgur.com/9baxjlG.jpg)
-A hover on top of a TrueAI button next to the reply button would make the text appear in the editor. It would cost a click to accept and then another one to accept. It wasn't ideal since that place is sometimes taken by the 'Reply and Close' button when there's text in the editor.
+A hover on top of a button next to the reply button would make the text appear in the editor. It would cost a click to accept and then another one to accept. It wasn't ideal since that place is sometimes taken by the 'Reply and Close' button when there's text in the editor.
 
 #### Option C
 ![Option C](http://i.imgur.com/QXziXtZ.jpg)
-A switch that when active would automatically show TrueAI's suggestions, and it could be turned off. This way users could just click reply to immediately send, edit the suggestion or turn off the suggestions. I chose this one.
+A switch that when active would automatically show services's suggestions, and it could be turned off. This way users could just click reply to immediately send, edit the suggestion or turn off the suggestions. I chose this one.
 
 When switching on it should immediately fetch the suggestion (rather than turning the plugin on and then reloading the page). When turning off the plugin, it should delete the message in the editor only if the message was one suggested.
 
@@ -48,19 +48,19 @@ I assume that the conversations happen only in pages served by the following end
 
 If there's more places where the extension should work, it should be easy to add.
 
-I assume that TrueAI would like to validate their suggestions or even see what an user has responded to a given context.
+I assume that the service would like to validate their suggestions or even see what an user has responded to a given context.
 
 I assume that Intercom users reply conversations by clicking on the reply button or by pressing `CMD + return`.
 
-I have also designed freely the shapes of the payloads sent and received to and from TrueAI APIs.
+I have also designed freely the shapes of the payloads sent and received to and from service APIs.
 
 I also assume the company name is the team name in the Intercom application. Since nowehere in the page there is a label called company name, I picked the most fitting one.
 
 ### Application architecture
 
-The application was small so it wasn't going to be a problem to manage complexity. I still figured I'd like to have different files for specific concerns such as interacting with TrueAI, the page or configurations. I also encapsulated the whole flow in a try and catch so the errors would be logged in the console with very specific messages.
+The application was small so it wasn't going to be a problem to manage complexity. I still figured I'd like to have different files for specific concerns such as interacting with the service, the page or configurations. I also encapsulated the whole flow in a try and catch so the errors would be logged in the console with very specific messages.
 
-I checked Intercom's documentation for developers, and considered using the API to access the data. However, the API uses OAuth tokens. I tried finding the token somewhere in the page with no success. Making the user log in through the extension was an option I considered but this would not be ideal if there was also a TrueAI login process (double logins). I proceeded to consider working with the served page instead.
+I checked Intercom's documentation for developers, and considered using the API to access the data. However, the API uses OAuth tokens. I tried finding the token somewhere in the page with no success. Making the user log in through the extension was an option I considered but this would not be ideal if there was also a service login process (double logins). I proceeded to consider working with the served page instead.
 
 I noticed Intercom is a single page application built with Ember.js. I digged a little bit about this framework to see if I could work with it rather than fight with it. I realised this would require more time in order to be able of reverse engineering Ember components. This would be my suggestion for a production application (specifically, for reasons mentioned in **Shortcomings**), but for this prototype I will be working directly with the DOM.
 
@@ -73,18 +73,16 @@ In production I would:
 * enforce style with a linter
 * write a test suite
 
-# Bonus
-
 ### Extra features
 
 I took the freedom to write code for the following requirements I thought were necessary:
 
 * A cache for the suggestions: this is so the same request is not made twice if the suggestion has already been fetched.
-* A reply listener: I figured TrueAI would like to know the result of their suggestion, so the extension listens for sent messages so it can know if their suggestion was approved or not (or modified).
+* A reply listener: I figured a service would like to know the result of their suggestion, so the extension listens for sent messages so it can know if their suggestion was approved or not (or modified).
 
 ### User authentication
 
-To authenticate every request, we can give the extension a token on login. When they first install the token, we could ask them to authenticate themselves to TrueAI services. This shouldn't be hard.
+To authenticate every request, we can give the extension a token on login. When they first install the token, we could ask them to authenticate themselves to services. This shouldn't be hard.
 
 # Shortcomings
 

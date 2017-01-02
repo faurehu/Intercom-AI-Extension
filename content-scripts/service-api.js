@@ -1,9 +1,9 @@
 /*
- * All interactions with the TrueAI server are abstracted here
+ * All interactions with the suggestion server are abstracted here
  */
 
-var TRUE_AI_API_URL_SUGGESTION = 'https://trueai.io/suggestions';
-var TRUE_AI_API_URL_RESPONSE = 'https://trueai.io/responses';
+var SERVICE_API_URL_SUGGESTION = 'https://96e2c377.ngrok.io/suggestions';
+var SERVICE_API_URL_RESPONSE = 'https://96e2c377.ngrok.io/responses';
 
 function getConversationID() {
   var path = window.location.pathname.split('/');
@@ -40,7 +40,7 @@ function getSuggestion(context, company, cb) {
 }
 
 function postResult(context, suggestionID, result) {
-  url = new URL(TRUE_AI_API_URL_RESPONSE);
+  url = new URL(SERVICE_API_URL_RESPONSE);
   url.searchParams.append('context', JSON.stringify(context));
   url.searchParams.append('suggestionID', suggestionID);
   url.searchParams.append('result', result);
